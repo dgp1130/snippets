@@ -1,3 +1,10 @@
+/**
+ * TypeScript implementation of a Generator with a return value. Built-in types
+ * actually already support this, but it is not very usable because calling
+ * `for-of` drops the return type. This is intended as a more usable alternative
+ * which avoids the need to call `.next()`.
+ */
+
 class GeneratorResult<YieldType, ReturnType, NextType = void> {
     public iterable: Generator<YieldType, void, NextType>;
     public result: ReturnType|null = null;
@@ -129,7 +136,7 @@ function* execute() {
     return 0;
 }
 
-function* secondExecution() { 
+function* secondExecution() {
     yield new Log('Trying a thing.');
     yield new Log('Trying another thing.');
 

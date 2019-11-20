@@ -1,3 +1,8 @@
+/**
+ * Simple example of overloading `Symbol.iterator` to use a `for-of` loop to
+ * iterate over a complex type.
+ */
+
 class Story {
     constructor(cards) {
         this.cards = cards;

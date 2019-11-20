@@ -1,3 +1,10 @@
+/**
+ * Looks for all links present on a page and prints them. Useful for aggregating
+ * all the links on a suspicious page to verify potential phishing. Since links
+ * can be implemented in JavaScript, this won't catch every link, but can be a
+ * starting point.
+ */
+
 function* findLinks(el) {
     if (el.getAttributeNames) { // HTML comments don't have attributes.
         for (const attr of el.getAttributeNames()) {

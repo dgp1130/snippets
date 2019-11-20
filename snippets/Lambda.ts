@@ -1,5 +1,8 @@
-// Run this in a TypeScript interpreter, such as:
-// https://www.typescriptlang.org/play/
+/**
+ * Some fun I had with lambda calculus. This is a TypeScript implementation of
+ * basic arithmetic and boolean logic using strict lambda calculus. The only
+ * place I had to cheat was in the print functions.
+ */
 
 const output = document.createElement('div');
 document.querySelector('body').appendChild(output);

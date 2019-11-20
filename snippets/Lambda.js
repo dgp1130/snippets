@@ -1,3 +1,9 @@
+/**
+ * Some fun I had with lambda calculus. This is a JavaScript implementation of
+ * basic arithmetic and boolean logic using strict lambda calculus. The only
+ * place I had to cheat was in the `print()` function.
+ */
+
 var t = (x) => (y) => x;
 var f = (x) => (y) => y;
 var ifStmt = (c) => (tVal) => (fVal) => c(tVal)(fVal);

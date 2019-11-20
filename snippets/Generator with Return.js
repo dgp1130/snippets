@@ -1,3 +1,9 @@
+/**
+ * JavaScript implementation of a generator function with a return value. The
+ * original idea was that a function could `yield` any logs it had, while it
+ * would `return` the meaningful value.
+ */
+
 function generatorWithReturn(gen) {
     return () => {
         return new GeneratorResult(gen());

@@ -1,3 +1,8 @@
+/**
+ * Prototype of a "colorizer" using tagged template literals to create an
+ * intuitive API for color console output.
+ */
+
 function* buildConsoleString(fragments: TemplateStringsArray, ...placeholders: Color[]): IterableIterator<string> {
     for (let i = 0; i < fragments.length - 1; ++i) {
         yield fragments[i];

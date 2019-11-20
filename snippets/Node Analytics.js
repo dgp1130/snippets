@@ -1,4 +1,13 @@
-var y = f => (x => x(x))(x => f(y => x(x)(y)))
+/**
+ * Counts all the DOM nodes on the page. This was an attempt to verify the
+ * values provided by Lighthouse, but I was never able to fully confirm them.
+ *
+ * This grew out of a few one-lines somewhat organically, so I had some fun
+ * trying to fit these as one-liners. As a result it very unnecessarily uses a
+ * Y-combinator to perform recursions.
+ */
+
+var y = f => (x => x(x))(x => f(y => x(x)(y)));
 
 // Use as: y((recurse) => (n) => n === 0 ? 1 : n * recurse(n - 1))(6)
 
