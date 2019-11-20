@@ -1,0 +1,30 @@
+{
+  "name": "snippets",
+  "version": "0.0.0",
+  "description": "Collection of random snippets from Chrome DevTools.",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgp1130/dgp1130-snippets.git"
+  },
+  "keywords": [
+    "snippets",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Doug Parker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dgp1130/dgp1130-snippets/issues"
+  },
+  "homepage": "https://github.com/dgp1130/dgp1130-snippets#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "@types/node": "^12.12.11",
+    "assert-never": "^1.2.0",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
+  }
+}
