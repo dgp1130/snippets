@@ -46,15 +46,16 @@ commit and push the snippets.
 
 ### Export
 
+WARNING: This will overwrite any existing snippets with the same names of the
+exported snippets. Any unrelated snippets with unique names are left alone.
+
 To export from this repository to Chrome DevTools, run:
 
 ```shell
-npm start export
+# Don't use `npm start`, because it includes extra output you don't want.
+node_modules/.bin/ts-node index.ts export
 # Consider piping this into the relevant copy script to put stdout on the clipboard.
 ```
 
-Then copy the output and execute in the DevTools-on-DevTools window:
-
-```javascript
-InspectorFrontendHost.setPreference('scriptSnippets', '<paste-snippets>');
-```
+Then copy the output and then paste it in the DevTools-on-DevTools console.
+Close and reopen the DevTools windows to see the imported snippets.

@@ -1,4 +1,5 @@
 import {importSnippets} from './commands/import';
+import {exportSnippets} from './commands/export';
 
 (async () => {
   // Parse command and arguments.
@@ -9,6 +10,9 @@ import {importSnippets} from './commands/import';
     switch (command) {
       case 'import':
         await importSnippets(...args);
+        break;
+      case 'export':
+        await exportSnippets(...args);
         break;
       default: throw new Error(`Unknown command: ${command}.`);
     }
