@@ -20,11 +20,9 @@
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
-    const url = `https://github.com/${repo}/commits?author=${
-        encodeURIComponent(user)
-    }&since=${
-        encodeURIComponent(toDateQueryString(oneWeekAgo))
-    }`;
+    const url = new URL(`https://github.com/${repo}/search`);
+    url.searchParams.set('q', `author:${user} author-date:>${toDateQueryString(oneWeekAgo)}`);
+    url.searchParams.set('type', 'Commits');
 
-    window.open(url);
-}('dgp1130', 'angular/angular'));
+    window.location.href = url.toString();
+}('dgp1130', 'angular/angular-cli'));
