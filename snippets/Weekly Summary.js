@@ -1,28 +1,34 @@
 /**
- * Bookmarklet which opens up a Github search for all commits by an individual
- * for particular repository in the last 7 days. This is useful to get a weekly
- * summary of code contributions. Use this by copy-pasting it into a new
- * bookmark URL prefixed with `javascript:` to invoke this when that bookmark is
- * clicked.
+ * Bookmarklet which opens up a Github search for all PRs by an individual in
+ * the last 7 days. This is useful to get a weekly summary of code
+ * contributions. Use this by copy-pasting it into a new bookmark URL prefixed
+ * with `javascript:` to invoke this when that bookmark is clicked.
  *
- * Consider changing the arguments to the function to change the user or repo
- * being referenced.
+ * Consider changing the arguments to the function to change the user being
+ * referenced.
  */
 
-(function (user, repo) {
-    if (!user || !repo) throw new Error('Must provide a user and repo as arguments.');
+(function (user) {
+    if (!user) throw new Error('Must provide a user argument.');
 
+    /**
+     * Transform the date into YYYY-MM-DD format (zero-padded which is actually
+     * necessary for GitHub search).
+     */
     function toDateQueryString(date) {
-        return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+        return `${date.getFullYear()}-${
+            date.getMonth().toString().padStart(2, '0')}-${
+            date.getDate().toString().padStart(2, '0')}`;
     }
 
     const date = new Date();
     const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    oneWeekAgo.setDate(date.getDate() - 7);
 
-    const url = new URL(`https://github.com/${repo}/search`);
-    url.searchParams.set('q', `author:${user} author-date:>${toDateQueryString(oneWeekAgo)}`);
-    url.searchParams.set('type', 'Commits');
+    const url = new URL(`https://github.com/search`);
+    url.searchParams.set('q', `is:pr author:${user} created:>${
+        toDateQueryString(oneWeekAgo)} state:closed`);
+    url.searchParams.set('type', 'Issues');
 
     window.location.href = url.toString();
-}('dgp1130', 'angular/angular-cli'));
+}('dgp1130'));
