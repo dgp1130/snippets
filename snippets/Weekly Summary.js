@@ -4,12 +4,16 @@
  * contributions. Use this by copy-pasting it into a new bookmark URL prefixed
  * with `javascript:` to invoke this when that bookmark is clicked.
  *
- * Consider changing the arguments to the function to change the user being
- * referenced.
+ * Consider changing the arguments to the function to change the user and
+ * repository owners being referenced.
  */
 
-(function (user) {
+(function (user, owners = []) {
     if (!user) throw new Error('Must provide a user argument.');
+    if (!Array.isArray(owners)) {
+        throw new Error('Must provide an array for owners (or undefined for all'
+                + ' owners).');
+    }
 
     /**
      * Transform the date into YYYY-MM-DD format (zero-padded which is actually
@@ -27,8 +31,9 @@
 
     const url = new URL(`https://github.com/search`);
     url.searchParams.set('q', `is:pr author:${user} closed:>${
-        toDateQueryString(oneWeekAgo)}`);
+        toDateQueryString(oneWeekAgo)} ${
+        owners.map((repo) => `user:${repo}`)}`);
     url.searchParams.set('type', 'Issues');
 
     window.location.href = url.toString();
-}('dgp1130'));
+}('dgp1130', ['angular']));
