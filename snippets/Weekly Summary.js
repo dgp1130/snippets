@@ -13,11 +13,11 @@
 
     /**
      * Transform the date into YYYY-MM-DD format (zero-padded which is actually
-     * necessary for GitHub search).
+     * necessary for GitHub search). Values are 1-indexed to be human-readable.
      */
     function toDateQueryString(date) {
         return `${date.getFullYear()}-${
-            date.getMonth().toString().padStart(2, '0')}-${
+            (date.getMonth() + 1).toString().padStart(2, '0')}-${
             date.getDate().toString().padStart(2, '0')}`;
     }
 
