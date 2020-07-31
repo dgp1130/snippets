@@ -26,8 +26,8 @@
     oneWeekAgo.setDate(date.getDate() - 7);
 
     const url = new URL(`https://github.com/search`);
-    url.searchParams.set('q', `is:pr author:${user} created:>${
-        toDateQueryString(oneWeekAgo)} state:closed`);
+    url.searchParams.set('q', `is:pr author:${user} closed:>${
+        toDateQueryString(oneWeekAgo)}`);
     url.searchParams.set('type', 'Issues');
 
     window.location.href = url.toString();
